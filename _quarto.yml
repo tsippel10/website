@@ -1,5 +1,7 @@
 project:
   type: website
+  post-render:
+    - make_pdf.R
 
 website:
   title: "Website"
