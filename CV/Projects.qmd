@@ -2,7 +2,7 @@
 title: ""
 format:
   html:
-    css: cv_style_webpage_2.css
+    css: ../cv_style_webpage_2column.css
     theme: default
     format-links: false
     grid:
