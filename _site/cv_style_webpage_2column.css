@@ -7,6 +7,13 @@ body {
     font-size: 100%;
 }
 
+/* Quarto hoists the first "# " heading (the name) into its own title block,
+   which renders outside .personal_info and is left-aligned by default. Center
+   it so the name sits centered above the personal-info box. */
+#title-block-header .title {
+    text-align: center;
+}
+
 /* Personal information section */
 .personal_info {
     text-align: center;
