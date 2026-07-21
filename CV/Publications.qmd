@@ -1,0 +1,48 @@
+---
+title: ""
+format:
+  html:
+    css: cv_style_webpage_2.css
+    theme: default
+    format-links: false
+    grid:
+      body-width: 920px
+---
+
+```{r}
+#| label: required-packages
+#| echo: false
+#| include: false
+library(tidyverse)
+```
+
+```{r}
+#| label: publications
+#| echo: false
+#| results: asis
+
+# Full publication list, generated from Bibliography/cv_publications.bib
+# (see sync_zotero.R). Shared parsing/formatting is in publications.R.
+# The CV (CV.qmd) shows a selected subset and links here.
+source("publications.R")
+bib_path <- "Bibliography/cv_publications.bib"
+
+pubs <- parse_publications(bib_path)
+peer_reviewed <- Filter(function(r) !is_report(r), pubs)
+reports       <- Filter(is_report, pubs)
+
+cat("::: {.publications}\n\n")
+cat("::: {.pubs-header}\n\n")
+cat("## Publications\n\n")
+cat("[← Back to CV](CV.html){.all-pubs-link}\n\n")
+cat(":::\n\n")
+if (length(peer_reviewed)) {
+  cat("### Peer-reviewed publications\n\n")
+  for (r in peer_reviewed) cat(format_entry(r), "\n\n")
+}
+if (length(reports)) {
+  cat("### Reports\n\n")
+  for (r in reports) cat(format_entry(r), "\n\n")
+}
+cat(":::\n\n")
+```

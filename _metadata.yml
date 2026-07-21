@@ -1,0 +1,5 @@
+# Use the committed freeze cache instead of re-executing the R code chunks.
+# CV.qmd / CV/Projects.qmd / CV/Publications.qmd pull from a private Google
+# Sheet, so their outputs are frozen (see _freeze/) and reused at render time.
+execute:
+  freeze: true

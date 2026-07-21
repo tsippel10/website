@@ -1,0 +1,55 @@
+---
+title: ""
+format:
+  html:
+    css: cv_style_webpage_2.css
+    theme: default
+    format-links: false
+    grid:
+      body-width: 920px
+---
+
+```{r}
+#| label: required-packages
+#| echo: false
+#| include: false
+library(tidyverse)
+library(googlesheets4)
+```
+
+```{r}
+#| label: load-data
+#| echo: false
+#| include: false
+
+# Full project list, a supplement to the CV's Project Experience section.
+# Pulled live from the Projects tab of the CV Google Sheet, using the
+# Project_Short_Name, Project_Location, and Project_Description_Short fields.
+cv_data <- "https://docs.google.com/spreadsheets/d/12-v_2G9hekg9jv-Om4kFGLmT733Bnb6p_NSW0jl6nYY/edit?gid=1958414084#gid=1958414084"
+projects <- read_sheet(cv_data, sheet = "Projects")
+```
+
+```{r}
+#| label: projects
+#| echo: false
+#| results: asis
+
+cat("::: {.publications}\n\n")
+cat("::: {.pubs-header}\n\n")
+cat("## Projects\n\n")
+cat("[← Back to CV](CV.html){.all-pubs-link}\n\n")
+cat(":::\n\n")
+
+walk(1:nrow(projects), \(i) {
+  p <- projects |> slice(i)
+  if (is.na(p$Project_Short_Name)) return(invisible())
+
+  entry <- paste0("**", p$Project_Short_Name, "**")
+  if (!is.na(p$Project_Location)) entry <- paste0(entry, " (", p$Project_Location, ")")
+  if (!is.na(p$Project_Description_Short)) entry <- paste0(entry, " — ", p$Project_Description_Short)
+
+  cat(entry, "\n\n")
+})
+
+cat(":::\n\n")
+```

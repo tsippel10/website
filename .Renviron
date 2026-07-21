@@ -1,0 +1,5 @@
+# CV.qmd's `render-siblings` chunk re-renders Publications.qmd/Projects.qmd from
+# its own folder — an author convenience that assumes the CV repo's flat layout.
+# In this website they live in CV/, so skip that automation. The full-project
+# `quarto render` builds all pages anyway.
+CV_SKIP_SIBLINGS=1

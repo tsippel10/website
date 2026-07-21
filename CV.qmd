@@ -1,0 +1,321 @@
+---
+title: ""
+format:
+  html:
+    css: cv_style_webpage_2column.css
+    theme: default
+    format-links: false
+    grid:
+      body-width: 920px
+#bibliography: Bibliography/My Library.bib
+---
+
+```{r}
+#| label: required-packages
+#| echo: false
+#| include: false
+library(tidyverse)
+library(janitor)
+library(googlesheets4)
+library(quarto)
+library(renderthis)
+```
+
+```{r}
+#| label: read-cv-data
+#| echo: false
+#| include: false
+cv_data <- "https://docs.google.com/spreadsheets/d/12-v_2G9hekg9jv-Om4kFGLmT733Bnb6p_NSW0jl6nYY/edit?gid=1958414084#gid=1958414084"
+
+personal_info <- read_sheet(cv_data, sheet = "Personal_Info") 
+education <- read_sheet(cv_data, sheet = "Education") 
+employment <- read_sheet(cv_data, sheet = "Employment") 
+projects <- read_sheet(cv_data, sheet = "Projects") 
+skills <- read_sheet(cv_data, sheet = "Skills") 
+certifications <- read_sheet(cv_data, sheet = "Certifications") 
+professional_service <- read_sheet(cv_data, sheet = "Professional_Service")
+professional_memberships <- read_sheet(cv_data, sheet = "Professional_Memberships")
+references <- read_sheet(cv_data, sheet = "References")
+```
+
+```{r}
+#| label: cv-personal-info
+#| echo: false
+#| results: asis
+
+# Extract personal information
+name <- paste0(personal_info$First_Name_Short, " ", personal_info$Last_Name, ", ", personal_info$Degree)
+professional_title <- personal_info$Professional_Title
+email <- personal_info$Email
+phone <- personal_info$Cell_Phone
+website <- personal_info$Website
+linkedin <- personal_info$LinkedIn
+github <- personal_info$Github
+professional_statement <- personal_info$Professional_Statement
+
+cat("::: {.personal_info}\n\n")
+cat("::: {.text-center}\n\n")
+cat("# ", name, "\n\n")
+cat("<div class=\"professional-title\">**", professional_title, "**</div>\n\n", sep = "")
+if (!is.na(professional_statement)) {
+  cat("::: {.professional-statement}\n", professional_statement, "\n:::\n\n", sep = "")
+}
+cat(":::\n\n")
+cat(":::\n\n")
+```
+
+```{r}
+#| label: cv-contact
+#| echo: false
+#| results: asis
+
+# Full-width Contact band between header and the two-column layout
+cat("::: {.contact_info}\n\n")
+cat("## Contact\n\n")
+cat("::: {.contact-items}\n")
+cat("[", email, "]{.contact-item} ",
+    "[|]{.contact-sep} ",
+    "[[{{< fa brands linkedin >}} LinkedIn](", linkedin, ")]{.contact-item} ",
+    "[|]{.contact-sep} ",
+    "[[{{< fa brands github >}} GitHub](", github, ")]{.contact-item}\n",
+    sep = "")
+cat(":::\n\n")
+cat(":::\n\n")
+```
+
+```{r}
+#| label: cv-layout
+#| echo: false
+#| results: asis
+
+# Start 2-column container
+cat(":::: {.columns style=\"column-gap: 1%;\"}\n\n")
+
+# Left column - Employment and Professional Service (70%)
+cat("::: {.column width=\"70%\"}\n")
+```
+
+```{r}
+#| label: cv-employment
+#| echo: false
+#| results: asis
+
+cat("::: {.employment}\n\n")
+cat("## Work History\n\n")
+
+walk(1:7, \(i) {
+  emp <- employment |> slice(i)
+
+  # Spacer between employers (reduced white space)
+  if (i > 1) {
+    cat("::: {.emp-sep}\n:::\n\n")
+  }
+
+  cat("**", emp$Employer, "**, ", emp$Position_Title, ": ",
+      emp$Month_Start, " ", emp$Year_Start, " - ",
+      ifelse(is.na(emp$Month_End), "Present", paste(emp$Month_End, emp$Year_End)),
+      "\n\n", sep = "")
+  
+  cat("::: {style=\"margin-top: 0; margin-bottom: 0;\"}\n")
+  cat(":::: {.callout-note appearance=\"minimal\" style=\"padding-top: 0px; padding-bottom: 0px; border-left-color: #723d42ff; border: 0.0px solid #723d42ff\"}\n")
+  cat("::: {style=\"margin-top: 0; margin-bottom: 0\"}\n")
+
+  # Add the position description
+  if (!is.na(emp$Position_Description)) {
+    cat("::: {style=\"font-size: 72%;\"}\n")
+    cat("**Position:** ", emp$Position_Description, "\n", sep = "")
+    cat(":::\n\n")
+  }
+
+  # Add the Accomplishments column (ignore Accomplishments_ columns)
+  if (!is.na(emp$Accomplishments)) {
+    cat("::: {style=\"font-size: 72%;\"}\n")
+    cat("**Accomplishments:** ", emp$Accomplishments, "\n", sep = "")
+    cat(":::\n\n")
+  }
+  
+  cat(":::\n")
+  cat("::::\n:::\n\n")
+})
+
+cat(":::\n\n")
+```
+
+```{r}
+#| label: cv-professional-service
+#| echo: false
+#| results: asis
+
+# Professional Service
+cat("::: {.professional_service}\n\n")
+cat("## Professional Service\n\n")
+
+walk(1:nrow(professional_service), \(i) {
+  ps <- professional_service |> slice(i)
+
+  # Year_End is a list-column (mixed numbers and text), so pull out the scalar
+  year_end <- ps$Year_End
+  if (is.list(year_end)) year_end <- year_end[[1]]
+
+  year_range <- if(length(year_end) == 0 || is.na(year_end)) {
+    as.character(ps$Year_Start)
+  } else {
+    paste0(ps$Year_Start, " - ", year_end)
+  }
+
+  cat("**", ps$Professional_Service, "**, ", ps$Institution, ": ", year_range, "\n\n", sep = "")
+})
+
+cat(":::\n\n")
+```
+
+```{r}
+#| label: cv-close-left-column
+#| echo: false
+#| results: asis
+
+cat(":::\n\n")  # Close left column
+```
+
+```{r}
+#| label: cv-right-column
+#| echo: false
+#| results: asis
+
+# Right column - Skills, Project Experience, Education (30%)
+cat("::: {.column width=\"30%\"}\n\n")
+
+# Skills
+cat("::: {.skills}\n\n")
+cat("## Technical Skills\n\n")
+walk(1:nrow(skills), \(i) {
+  skill <- skills |> slice(i)
+  if (!is.na(skill$Description)) {
+    cat("- **", skill$Skill, "**: ", skill$Description, "\n", sep = "")
+  } else {
+    cat("- **", skill$Skill, "**\n", sep = "")
+  }
+})
+cat(":::\n\n")
+
+# Project Experience
+cat("::: {.project_experience}\n\n")
+cat("::: {.pubs-header}\n\n")
+cat("## Project Experience\n\n")
+cat("[Details →](https://lively-creponne-9551c2.netlify.app/CV/Projects.html){.all-pubs-link}\n\n")
+cat(":::\n\n")
+
+# Consolidate project types that appear in multiple locations, e.g.
+# "Fish passage (Oregon)" + "Fish passage (Washington)" ->
+# "Fish passage (Oregon, Washington)". The type name is bolded; the
+# combined "(locations)" list stays in normal weight. Type and location
+# order follow first appearance in the Projects sheet.
+project_types <- projects$Project_Type |>
+  na.omit() |>
+  unique()
+
+project_types_fmt <- tibble(raw = project_types) |>
+  mutate(
+    name     = str_trim(str_replace(raw, "\\s*\\(.*\\)\\s*$", "")),
+    location = str_match(raw, "\\((.*)\\)\\s*$")[, 2]
+  ) |>
+  mutate(name = factor(name, levels = unique(name))) |>
+  group_by(name) |>
+  summarise(
+    locations = paste(unique(location[!is.na(location)]), collapse = ", "),
+    .groups = "drop"
+  ) |>
+  arrange(name) |>
+  mutate(
+    name  = as.character(name),
+    entry = if_else(locations == "",
+                    paste0("**", name, "**"),
+                    paste0("**", name, "** (", locations, ")"))
+  ) |>
+  pull(entry)
+
+cat(paste(project_types_fmt, collapse = "; "), "\n\n")
+
+cat(":::\n\n")
+
+# Education
+cat("::: {.education}\n\n")
+cat("## Education\n\n")
+walk(1:nrow(education), \(i) {
+  edu <- education |> slice(i)
+  cat("**", edu$Degree, "** - ", edu$Degree_specialization, ", ", edu$Institution, ", ", edu$Location, "\n\n", sep = "")
+})
+cat(":::\n\n")
+
+# Professional Memberships
+cat("::: {.professional_memberships}\n\n")
+cat("## Professional Memberships\n\n")
+walk(1:nrow(professional_memberships), \(i) {
+  pm <- professional_memberships |> slice(i)
+
+  year_end <- pm$Year_end
+  if (is.list(year_end)) year_end <- year_end[[1]]
+  year_range <- if (length(year_end) == 0 || is.na(year_end)) {
+    as.character(pm$Year_Start)
+  } else {
+    paste0(pm$Year_Start, " - ", year_end)
+  }
+
+  cat("**", pm$Organization, "**: ", year_range, "\n\n", sep = "")
+})
+cat(":::\n\n")
+
+cat(":::\n\n")   # Close right column
+cat("::::\n\n")  # Close columns container
+```
+
+```{r}
+#| label: cv-publications
+#| echo: false
+#| results: asis
+
+# Selected publications: the subset flagged in Zotero (tag "cv-selected", carried
+# into the bib as `keywords = {selected}` by sync_zotero.R), newest first, with
+# "Sippel" bolded. The full list lives on Publications.html (Publications.qmd).
+# Shared parsing/formatting is in publications.R. Run `Rscript sync_zotero.R`
+# to refresh the bib before rendering.
+source("publications.R")
+bib_path <- "Bibliography/cv_publications.bib"
+
+pubs <- parse_publications(bib_path)
+selected <- Filter(function(r) isTRUE(r$selected), pubs)
+peer_reviewed <- Filter(function(r) !is_report(r), selected)
+reports       <- Filter(is_report, selected)
+
+cat("::: {.publications}\n\n")
+cat("::: {.pubs-header}\n\n")
+cat("## Selected Publications\n\n")
+cat("[See all publications →](https://lively-creponne-9551c2.netlify.app/CV/Publications.html){.all-pubs-link}\n\n")
+cat(":::\n\n")
+if (length(peer_reviewed)) {
+  cat("### Peer-reviewed publications\n\n")
+  for (r in peer_reviewed) cat(format_entry(r), "\n\n")
+}
+if (length(reports)) {
+  cat("### Reports\n\n")
+  for (r in reports) cat(format_entry(r), "\n\n")
+}
+cat(":::\n\n")
+```
+
+```{r}
+#| label: render-siblings
+#| echo: false
+#| include: false
+
+# Keep the supplement pages in sync with the CV: whenever CV.qmd is rendered on
+# its own (e.g. from the IDE), also re-render Publications.html and Projects.html.
+# render.sh sets CV_SKIP_SIBLINGS=1 for the full-project `quarto render`, which
+# already builds all three pages, so this only fires for single-file renders and
+# never double-renders. The guard also prevents any nested re-entry.
+if (Sys.getenv("CV_SKIP_SIBLINGS") != "1") {
+  Sys.setenv(CV_SKIP_SIBLINGS = "1")
+  quarto::quarto_render("Publications.qmd")
+  quarto::quarto_render("Projects.qmd")
+}
+```
