@@ -163,6 +163,11 @@ li {
 }
 
 @media print {
+    /* Web-only controls (e.g. the Download PDF link) are hidden in the PDF. */
+    .screen-only {
+        display: none !important;
+    }
+
     body {
         margin: 0;
         font-size: 10pt;

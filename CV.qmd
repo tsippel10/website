@@ -79,13 +79,15 @@ website_url <- if (grepl("^https?://", website)) website else paste0("https://",
 cat("::: {.contact-items}\n")
 cat("[", email, "]{.contact-item} ",
     "[|]{.contact-sep} ",
-    "[[{{< fa solid globe >}} Website](", website_url, ")]{.contact-item} ",
+    "[[", website, "](", website_url, ")]{.contact-item} ",
     "[|]{.contact-sep} ",
     "[[{{< fa brands linkedin >}} LinkedIn](", linkedin, ")]{.contact-item} ",
     "[|]{.contact-sep} ",
     "[[{{< fa brands github >}} GitHub](", github, ")]{.contact-item} ",
-    "[|]{.contact-sep} ",
-    "[[{{< fa solid file-pdf >}} Download PDF](CV_Sippel.pdf)]{.contact-item}\n",
+    # Download PDF is web-only (hidden in the printed PDF via .screen-only);
+    # hide its leading separator too so no dangling "|" remains in the PDF.
+    "[|]{.contact-sep .screen-only} ",
+    "[[{{< fa solid file-pdf >}} Download PDF](CV_Sippel.pdf)]{.contact-item .screen-only}\n",
     sep = "")
 cat(":::\n\n")
 cat(":::\n\n")
