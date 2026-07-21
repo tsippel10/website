@@ -1,0 +1,4 @@
+# Standalone project so job-application letters render on their own and are
+# NOT swept into the public website build in the parent directory.
+project:
+  type: default

@@ -29,7 +29,12 @@ cv_data <- "https://docs.google.com/spreadsheets/d/12-v_2G9hekg9jv-Om4kFGLmT733B
 
 personal_info <- read_sheet(cv_data, sheet = "Personal_Info") 
 education <- read_sheet(cv_data, sheet = "Education") 
-employment <- read_sheet(cv_data, sheet = "Employment") 
+employment <- read_sheet(cv_data, sheet = "Employment")
+# Exclude selected employers, then keep only the most recent 5 (the CV shows
+# the top employers; previously the first 7, now the first 5 after removing
+# Blue Water Marine Research and Monterey Bay Aquarium).
+employment <- employment[!grepl("Blue ?Water Marine Research|Monterey Bay Aquarium", employment$Employer), ]
+employment <- head(employment, 5)
 projects <- read_sheet(cv_data, sheet = "Projects") 
 skills <- read_sheet(cv_data, sheet = "Skills") 
 certifications <- read_sheet(cv_data, sheet = "Certifications") 
@@ -107,9 +112,9 @@ cat("::: {.column width=\"70%\"}\n")
 #| results: asis
 
 cat("::: {.employment}\n\n")
-cat("## Work History\n\n")
+cat("## Work History (since completing PhD) \n\n")
 
-walk(1:7, \(i) {
+walk(seq_len(nrow(employment)), \(i) {
   emp <- employment |> slice(i)
 
   # Spacer between employers (reduced white space)

@@ -1,0 +1,43 @@
+---
+title: ""
+format:
+  html:
+    css: cover_letter.css
+    theme: none
+    format-links: false
+    embed-resources: true
+    page-layout: full
+---
+
+::: {.letterhead}
+[Tim Sippel, Ph.D.]{.name} [|]{.sep} [Senior Fisheries & Aquatic Scientist]{.role}
+
+[[tsippel@gmail.com](mailto:tsippel@gmail.com)]{.contact} [|]{.sep} www.environmental-scientist.com [|]{.sep} Cell Phone: 858-348-7469
+:::
+
+[July 21, 2026]{.letter-date}
+
+::: {.recipient}
+Fisheries Department \
+Spheros Environmental
+:::
+
+Dear Spheros Environmental Hiring Team,
+
+I am appling for your [Senior/Principal Fisheries Scientist](https://secure7.saashr.com/ta/6203043.careers?CareersSearch=&lang=en-US) position. I live in Portland, Oregon, and across 25+ years as a fisheries and aquatic scientist, the last decade focused on Pacific Northwest salmonids, I have developed the combined experience and expertise Spheros is seeking: deep technical expertise in fish passage, ESA consultation, and quantitative monitoring and evaluation, paired with a record of winning work, leading teams, and mentoring the scientists behind them. 
+
+As a Senior Environmental Scientist and Fish Ecology subject-matter expert at Stantec, I provide senior scientific and analytical leadership on regulatory-compliance projects spanning hydroelectric dam relicensing and removal, Biological Assessments, and ESA Section 7 consultations, alongside habitat restoration and mitigation. I am senior author on a manuscript (In prep) quantifying spring Chinook spawning-habitat carrying capacity and am member of Stantec's Quantitative Ecology team. I am a member of the California Central Valley Project Improvment Act (CVPIA) [Science Integration Team (SIT)](https://cvpia.scienceintegrationteam.com/cvpia-sit) where I see opportunity to contribute to procurment of valuable new work, and was honored to be selected by the National Academy of Sciences to serve on the [Nature Record Review Committe](https://www.nationalacademies.org/projects/DELS-BASCPR-25-02) for the USA's first [Nature Record](https://naturerecord.org) assessment (to be released in late 2026). Although the editorial review of 15 chapters was completed through a consensus process, my primary contributions were to Inland Aquatic Ecosystems (Chapter 7) and Marine Ecosystems (Chapter 6). 
+
+Earlier, as a Fishery Scientist with the Washington Department of Fish and Wildlife, I contributed to monitoring and evaluation of salmon and steelhead abundance to meet ESA and *US v. Oregon* Management Agreement obligations, serving as WDFW's lead representative to the *US v. Oregon* Technical Advisory Committee. I worked closely with state, federal, and tribal co-managers, including CRITFC and the Confederated Tribes of the Colville Reservation. I also secured funding for and led development of a Columbia River salmon population-assessment and compliance-reporting database that helped modernize abundance estimation and forecasting, and regulatory compliance reporting for *US v. Oregon*. In contributed to survival analysis of PIT tagged salmon passage released from experimental fishing gear in the lower Columbia River as they moved upstream through mainstem hydroelectric dams (Cox and Sippel, 2020). 
+
+Business development and technical leadership run throughout my consulting career. At Stantec I am actively engaged in Business Development and at Worley I procured a contract with WDFW to build analytical tools for coho population and fish-impact assessment, and with The Nature Conservancy to evaluate recreational fisheries in marine protected areas. Across roles I have served as primary or senior author on peer-reviewed publications and regulatory submissions, presented at scientific conferences, mentored junior and quantitative staff, and built reproducible analytical tools in R. 
+
+My specialized depth is in fish passage and ESA consultation and permitting, two of the areas central to this position, and I am eager to extend it into hatchery operations, modernization, and master planning, where my ESA Section 7 and M&E experience transfers directly. I would welcome the opportunity to bring senior technical leadership and a strong regional network to Spheros's growing fisheries team, helping win and deliver work for public utility districts, agencies, municipalities, and tribes across the region.
+
+I welcome the opportunity to discuss how I can contribute to Spheros Environmental, thank you for your consideration.
+
+::: {.signoff}
+Sincerely,
+
+Tim Sippel
+:::

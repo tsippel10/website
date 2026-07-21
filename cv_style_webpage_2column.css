@@ -306,6 +306,15 @@ li {
     .professional_service {
         padding-bottom: 6px;
     }
+
+    /* Spread the employer entries evenly so the Work History box bottom
+       reaches the Project Experience box bottom on page 1. Print-only: the
+       webpage keeps the base 5px spacer (its text wraps differently). Four
+       gaps between the five entries; re-measure with `pdftotext -bbox` if the
+       Work History content changes materially. */
+    .emp-sep {
+        margin-top: 11px;
+    }
 }
 
 /* Contact heading sits on the left of the one-line bar */
