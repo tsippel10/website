@@ -1,8 +1,8 @@
 /.quarto/
-# Per-doc support dirs left behind by rendering CV.qmd; the site uses site_libs/
-# instead and no HTML references these, so they are unreferenced build noise.
-/CV_files/
-/_site/CV_files/
+# Per-doc support dirs (<doc>_files/) left behind by rendering; the website uses
+# site_libs/ instead and no HTML references these, so they are unreferenced
+# build noise (appears at the repo root and under _site/).
+*_files/
 **/*.quarto_ipynb
 .DS_Store
 **/.DS_Store
