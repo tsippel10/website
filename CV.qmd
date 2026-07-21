@@ -72,12 +72,20 @@ cat(":::\n\n")
 # Full-width Contact band between header and the two-column layout
 cat("::: {.contact_info}\n\n")
 cat("## Contact\n\n")
+
+# Website is stored as a bare domain in the sheet; add a scheme so the link works.
+website_url <- if (grepl("^https?://", website)) website else paste0("https://", website)
+
 cat("::: {.contact-items}\n")
 cat("[", email, "]{.contact-item} ",
     "[|]{.contact-sep} ",
+    "[[{{< fa solid globe >}} Website](", website_url, ")]{.contact-item} ",
+    "[|]{.contact-sep} ",
     "[[{{< fa brands linkedin >}} LinkedIn](", linkedin, ")]{.contact-item} ",
     "[|]{.contact-sep} ",
-    "[[{{< fa brands github >}} GitHub](", github, ")]{.contact-item}\n",
+    "[[{{< fa brands github >}} GitHub](", github, ")]{.contact-item} ",
+    "[|]{.contact-sep} ",
+    "[[{{< fa solid file-pdf >}} Download PDF](CV_Sippel.pdf)]{.contact-item}\n",
     sep = "")
 cat(":::\n\n")
 cat(":::\n\n")
