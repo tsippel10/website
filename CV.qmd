@@ -208,7 +208,7 @@ cat(":::\n\n")
 cat("::: {.project_experience}\n\n")
 cat("::: {.pubs-header}\n\n")
 cat("## Project Experience\n\n")
-cat("[Details →](CV/Projects.html){.all-pubs-link}\n\n")
+cat("[Details →](", website_url, "/CV/Projects.html){.all-pubs-link}\n\n", sep = "")
 cat(":::\n\n")
 
 # Consolidate project types that appear in multiple locations, e.g.
@@ -296,7 +296,7 @@ reports       <- Filter(is_report, selected)
 cat("::: {.publications}\n\n")
 cat("::: {.pubs-header}\n\n")
 cat("## Selected Publications\n\n")
-cat("[See all publications →](CV/Publications.html){.all-pubs-link}\n\n")
+cat("[See all publications →](", website_url, "/CV/Publications.html){.all-pubs-link}\n\n", sep = "")
 cat(":::\n\n")
 if (length(peer_reviewed)) {
   cat("### Peer-reviewed publications\n\n")
