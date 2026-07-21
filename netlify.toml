@@ -1,0 +1,10 @@
+# This site is pre-rendered locally with `quarto render`. Rendering needs R and
+# private Google Sheet auth (CV.qmd / CV/Projects.qmd read a private sheet), so
+# it is NOT run on Netlify. The built output in _site/ is committed to git, and
+# Netlify simply serves it as static files on each push.
+#
+# Workflow after editing content: run `quarto render` locally, then commit both
+# the source and the regenerated _site/.
+[build]
+  publish = "_site"
+  command = "echo 'No build on Netlify — serving pre-rendered _site/ committed from git.'"

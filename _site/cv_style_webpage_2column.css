@@ -1,0 +1,408 @@
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 15.3px;
+    background-color: #ffffff;
+    font-size: 100%;
+}
+
+/* Personal information section */
+.personal_info {
+    text-align: center;
+    padding: 2px 20px 6px 20px;
+    border-bottom: 2px solid #000;
+    margin-bottom: 10px;
+    line-height: 1.25;
+}
+
+.personal_info h1 {
+    margin-top: 0;
+    margin-bottom: 2px;
+    font-size: 1.6em;
+}
+
+/* Professional title styling */
+.professional-title {
+    font-size: 1.04em;
+    margin-bottom: 4px;
+    color: #555;
+}
+
+/* Professional statement styling */
+.professional-statement {
+    font-size: 0.8em;
+    max-width: 60em;
+    margin: 0 auto;
+    color: #444;
+    font-style: italic;
+}
+
+/* Shared div styling */
+.employment,
+.education,
+.project_experience,
+.contact_info,
+.skills,
+.professional_service,
+.professional_memberships,
+.publications,
+.certifications {
+    background-color: #fff;
+    padding: 5px 15px 3.5px 15px;
+    border: 1px solid #d3d3d3;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Contact bar: heading on the left, info distributed across the rest,
+   whole box one text line tall */
+.contact_info {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.contact-items {
+    flex: 1;
+}
+
+.contact-items p {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 0.5em;
+    margin: 0;
+}
+
+.contact-sep {
+    color: #bbb;
+}
+
+/* Spacer between employers: spread so the Employment box bottom aligns with
+   the Project Experience box in the right column (still fits on page 1) */
+.emp-sep {
+    margin-top: 9px;
+}
+
+/* Employer heading line (employer, title, dates): 15% smaller + tight gap */
+.employment > p {
+    font-size: 0.85em;
+    margin-bottom: 3px;
+}
+
+/* Reduce section text size by 15% */
+.employment,
+.education,
+.project_experience,
+.contact_info,
+.skills,
+.professional_service,
+.professional_memberships,
+.certifications {
+    font-size: 0.85em;
+}
+
+/* Shared h2 styling for all sections */
+.employment h2,
+.education h2,
+.project_experience h2,
+.contact_info h2,
+.skills h2,
+.professional_service h2,
+.professional_memberships h2,
+.certifications h2 {
+    margin-top: 0;
+    padding: 5px 10px;
+    border-bottom: 2px solid #333;
+    margin-bottom: 15px;
+    display: inline-block;
+    background-color: #f5f5f5;
+}
+
+/* Heading styling */
+h1, h2, h3 {
+    color: #333;
+}
+
+h2 {
+    font-size: 1.152em;
+}
+
+/* List styling */
+ul {
+    padding-left: 20px;
+    margin-top: 10px;
+}
+
+li {
+    margin-bottom: 8px;
+}
+
+/* Text centering utility */
+.text-center {
+    text-align: center;
+}
+
+/* Column layout utility */
+.columns {
+    display: flex;
+    gap: 1%;
+    margin-bottom: 20px;
+}
+
+.column {
+    flex: 1;
+}
+
+/* Print / PDF layout: US Letter (8.5in x 11in) */
+@page {
+    size: 8.5in 11in;
+    margin: 0.765in;
+}
+
+@media print {
+    body {
+        margin: 0;
+        font-size: 10pt;
+        line-height: 1.4;
+    }
+
+    /* Center content on the page: flatten Quarto's article grid
+       (which reserves an empty margin-note column on the right) */
+    #quarto-content.page-columns {
+        display: block !important;
+    }
+
+    main.content,
+    #quarto-document-content {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    /* Headless Chrome won't start a tall flex container mid-page (it bumps
+       the whole two-column block to the next page). Use floats for print so
+       the columns begin filling from the current position. */
+    .columns {
+        display: block !important;
+    }
+    .columns::after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+    .column {
+        float: left;
+    }
+
+    /* Keep the two-column layout side by side when printing */
+    .columns {
+        display: flex;
+        margin-bottom: 10px;
+    }
+
+    /* Flatten shadows for print; let tall sections (e.g. Employment)
+       flow across pages so page 1 fills instead of being pushed down */
+    .employment,
+    .education,
+    .project_experience,
+    .contact_info,
+    .skills,
+    .professional_service,
+    .professional_memberships,
+    .publications,
+    .certifications {
+        box-shadow: none;
+    }
+
+    /* Don't split a heading from the content that follows it */
+    h1, h2, h3 {
+        break-after: avoid;
+    }
+
+    /* Keep Professional Service (and what follows) starting on page 2 */
+    .professional_service {
+        break-before: page;
+    }
+
+    /* Keep the Education box intact; move it to page 2 rather than
+       splitting the heading from its content at the page break */
+    .education {
+        break-inside: avoid;
+    }
+
+    /* Keep the Professional Service box whole, and stretch it so its bottom
+       aligns with the Education + Professional Memberships stack in the right
+       column (entries distributed top-to-bottom). */
+    .professional_service {
+        break-inside: avoid;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 3.05in;
+    }
+
+    /* Close the gap between the Skills and Professional Service cards */
+    .skills {
+        margin-bottom: 4px;
+    }
+}
+
+/* Contact heading sits on the left of the one-line bar */
+.contact_info h2 {
+    margin: 0;
+    flex-shrink: 0;
+}
+
+/* Compress Employment + Professional Service to fit page 1 of the PDF */
+.employment {
+    font-size: 0.96em;
+    line-height: 1.3;
+}
+
+/* Reclaim space above the first entry */
+.employment h2 {
+    margin-bottom: 4px;
+}
+
+/* Neutralize Quarto callout's own vertical margins/padding (keep left indent) */
+.employment .callout,
+.employment .callout-body-container,
+.employment .callout-body {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* Clean, tight spacing controlled here rather than via inline negatives */
+.employment p {
+    margin-top: 0;
+    margin-bottom: 2px;
+}
+
+.professional_service {
+    font-size: 0.84em;
+    line-height: 1.18;
+}
+
+.professional_service p {
+    margin-bottom: 3px;
+}
+
+/* Keep each Professional Service entry from splitting across the page break */
+.professional_service p {
+    break-inside: avoid;
+}
+
+/* Publications: compact, full-width reverse-chronological list */
+.publications {
+    font-size: 0.8em;
+    line-height: 1.15;
+}
+
+/* Heading with the "See all publications" link right next to it */
+.pubs-header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: baseline;
+    gap: 0.8em;
+}
+
+.publications h2 {
+    margin-top: 0;
+    padding: 5px 10px;
+    border-bottom: 2px solid #333;
+    margin-bottom: 10px;
+    display: inline-block;
+    background-color: #f5f5f5;
+}
+
+.pubs-header .all-pubs-link {
+    white-space: nowrap;
+    font-size: 0.9em;
+}
+
+/* Sub-group headers (Peer-reviewed publications / Reports) */
+.publications h3 {
+    font-size: 1.05em;
+    font-weight: bold;
+    text-align: center;
+    margin: 4px 0 2px 0;
+    padding-bottom: 2px;
+    border-bottom: 1px solid #bbb;
+}
+
+.publications h3:first-of-type {
+    margin-top: 2px;
+}
+
+/* Hanging indent so wrapped lines sit under the first author */
+.publications p {
+    margin: 0 0 1px 0;
+    padding-left: 1.4em;
+    text-indent: -1.4em;
+}
+
+@media print {
+    .publications p {
+        break-inside: avoid;
+    }
+}
+
+/* Compact the Technical Skills box: trim white space */
+.skills h2 {
+    margin-bottom: 4px;
+}
+
+.skills ul {
+    margin-top: 2px;
+    margin-bottom: 0;
+}
+
+.skills li {
+    margin-bottom: 1px;
+}
+
+/* Compact the Education box: trim white space between degrees */
+.education h2 {
+    margin-bottom: 6px;
+}
+
+.education p {
+    margin: 0 0 4px 0;
+}
+/* ------------------------------------------------------------------ *
+ * Screen-only: render the web page as a centered, US-Letter "paper    *
+ * sheet" so CV.html reads like CV_Sippel.pdf. Scoped to @media screen *
+ * so it has NO effect on the printed PDF (which uses @media print).   *
+ * ------------------------------------------------------------------ */
+@media screen {
+    body {
+        background-color: #e9e9e9;
+        margin: 0;
+        padding: 28px 0;
+    }
+
+    /* Flatten Quarto's article grid so the sheet is a simple centered block */
+    #quarto-content.page-columns {
+        display: block !important;
+    }
+
+    main.content,
+    #quarto-document-content {
+        width: 8.5in;
+        max-width: 8.5in;
+        box-sizing: border-box;
+        margin: 0 auto !important;
+        padding: 0.765in;              /* same content margins as the PDF page */
+        background-color: #ffffff;
+        border-radius: 2px;
+        box-shadow: 0 3px 14px rgba(0, 0, 0, 0.18);
+        font-size: 10pt;               /* same base type scale as the PDF */
+        line-height: 1.4;
+    }
+}
