@@ -34,7 +34,7 @@ reports       <- Filter(is_report, pubs)
 cat("::: {.publications}\n\n")
 cat("::: {.pubs-header}\n\n")
 cat("## Publications\n\n")
-cat("[← Back to CV](CV.html){.all-pubs-link}\n\n")
+cat("[← Back to CV](../CV.html){.all-pubs-link}\n\n")
 cat(":::\n\n")
 if (length(peer_reviewed)) {
   cat("### Peer-reviewed publications\n\n")

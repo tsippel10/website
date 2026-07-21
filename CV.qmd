@@ -202,7 +202,7 @@ cat(":::\n\n")
 cat("::: {.project_experience}\n\n")
 cat("::: {.pubs-header}\n\n")
 cat("## Project Experience\n\n")
-cat("[Details →](https://lively-creponne-9551c2.netlify.app/CV/Projects.html){.all-pubs-link}\n\n")
+cat("[Details →](CV/Projects.html){.all-pubs-link}\n\n")
 cat(":::\n\n")
 
 # Consolidate project types that appear in multiple locations, e.g.
@@ -290,7 +290,7 @@ reports       <- Filter(is_report, selected)
 cat("::: {.publications}\n\n")
 cat("::: {.pubs-header}\n\n")
 cat("## Selected Publications\n\n")
-cat("[See all publications →](https://lively-creponne-9551c2.netlify.app/CV/Publications.html){.all-pubs-link}\n\n")
+cat("[See all publications →](CV/Publications.html){.all-pubs-link}\n\n")
 cat(":::\n\n")
 if (length(peer_reviewed)) {
   cat("### Peer-reviewed publications\n\n")
