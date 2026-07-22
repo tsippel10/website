@@ -60,7 +60,7 @@ professional_statement <- personal_info$Professional_Statement
 
 cat("::: {.personal_info}\n\n")
 cat("::: {.text-center}\n\n")
-cat("# ", name, "\n\n")
+cat("# ", name, " {.unlisted}\n\n")
 cat("<div class=\"professional-title\">**", professional_title, "**</div>\n\n", sep = "")
 if (!is.na(professional_statement)) {
   cat("::: {.professional-statement}\n", professional_statement, "\n:::\n\n", sep = "")
@@ -76,7 +76,7 @@ cat(":::\n\n")
 
 # Full-width Contact band between header and the two-column layout
 cat("::: {.contact_info}\n\n")
-cat("## Contact\n\n")
+cat("## Contact {.unlisted}\n\n")
 
 # Website is stored as a bare domain in the sheet; add a scheme so the link works.
 website_url <- if (grepl("^https?://", website)) website else paste0("https://", website)

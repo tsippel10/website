@@ -4,18 +4,19 @@ project:
     - make_pdf.R
 
 website:
-  title: "Website"
+  title: "Tim Sippel's Website"
   navbar:
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
-      - href: CV.qmd
-        text: CV
-      - href: CV/Projects.qmd
-        text: Projects
-      - href: CV/Publications.qmd
-        text: Publications 
+      - text: CV
+        menu:
+          - href: CV.qmd
+            text: CV
+          - href: CV/Projects.qmd
+            text: Projects
+          - href: CV/Publications.qmd
+            text: Publications
 
 
 format:
