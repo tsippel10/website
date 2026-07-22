@@ -2,6 +2,8 @@
 title: ""
 ---
 
-Thanks for visiting my website...I will will be expanding it more soon.
+Thanks for visiting my website...I will will be expanding it more soon. 
+
+Note, the search tool at the top right can be used to search for keywords.
 
 This site is built using Quarto <https://quarto.org/docs/websites>.
