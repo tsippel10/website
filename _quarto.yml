@@ -5,6 +5,8 @@ project:
 
 website:
   title: "Tim Sippel's Website"
+  page-footer:
+    center: "This site is built using [Quarto](https://quarto.org/docs/websites)."
   navbar:
     left:
       - href: index.qmd

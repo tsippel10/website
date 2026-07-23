@@ -6,6 +6,4 @@ I am an environmental scientist based in Portland, Oregon.
 
 Note, the search tool at the top right can be used to search for keywords.
 
-Thanks for visiting my website...I will will be expanding it more soon.[^quarto]
-
-[^quarto]: This site is built using Quarto <https://quarto.org/docs/websites>.
+Thanks for visiting my website...I will will be expanding it more soon.
