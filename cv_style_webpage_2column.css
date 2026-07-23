@@ -45,6 +45,15 @@ body {
     font-style: italic;
 }
 
+/* The professional statement appears only in the printed/PDF version. It is
+   hidden on screen (the online CV) but retained in @media print, so
+   pagedown::chrome_print still includes it in CV_Sippel.pdf. */
+@media screen {
+    .professional-statement {
+        display: none !important;
+    }
+}
+
 /* Shared div styling */
 .employment,
 .education,
