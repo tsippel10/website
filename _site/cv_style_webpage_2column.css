@@ -306,8 +306,15 @@ li {
        Tuned to current content; re-measure with `pdftotext -bbox` if the CV
        content changes materially. */
     .project_experience {
-        line-height: 1.28;
-        padding-bottom: 4px;
+        line-height: 1.14;
+        padding-bottom: 0;
+    }
+
+    /* Tighten the Project Experience heading and list intro so the long
+       semicolon-separated project list finishes on page 1. Re-measure with
+       `pdftotext -bbox` if the Projects sheet gains/loses entries. */
+    .project_experience h2 {
+        margin-bottom: 5px;
     }
 
     /* (Professional Service line-height/font live in the base rule below so
