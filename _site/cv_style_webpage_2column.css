@@ -331,6 +331,13 @@ li {
     .emp-sep {
         margin-top: 11px;
     }
+
+    /* Neutralize the screen-only right-column group wrappers so the print DOM
+       is effectively identical to before (the tuned PDF layout is unchanged). */
+    .rc-group-1,
+    .rc-group-2 {
+        display: contents;
+    }
 }
 
 /* Contact heading sits on the left of the one-line bar */
@@ -486,5 +493,59 @@ li {
         box-shadow: 0 3px 14px rgba(0, 0, 0, 0.18);
         font-size: 10pt;               /* same base type scale as the PDF */
         line-height: 1.4;
+    }
+}
+
+/* ------------------------------------------------------------------ *
+ * Screen-only: cross-column box alignment. The right-column boxes are *
+ * wrapped in .rc-group-1 (Skills + Project Experience) and            *
+ * .rc-group-2 (Education + Professional Memberships) in CV.qmd. We    *
+ * flatten the two .column wrappers into a shared 2x2 grid so each      *
+ * left box shares a row with its right-column group, then grow the    *
+ * last box in each group so its bottom border meets the row bottom:   *
+ *   - Project Experience bottom      -> Work History bottom            *
+ *   - Education top / Memberships bot -> Professional Service top/bot   *
+ * Scoped to @media screen so the tuned PDF (@media print) is unchanged.*
+ * ------------------------------------------------------------------ */
+@media screen {
+    /* Bootstrap (loaded after this file) sets div.columns{display:initial} and
+       .column{display:inline-block;width:50%} with winning specificity/order,
+       so !important is required here — same convention as the @media print
+       block above. */
+    .columns {
+        display: grid !important;
+        grid-template-columns: 70% 29%;   /* + 1% column-gap = 100% */
+        grid-template-rows: auto auto;
+        column-gap: 1% !important;
+        row-gap: 0;
+    }
+
+    /* Collapse the .column wrappers so the inner boxes/groups become the
+       direct grid items. */
+    .column {
+        display: contents !important;
+    }
+
+    /* Row 1: Work History | Skills + Project Experience */
+    .employment { grid-column: 1; grid-row: 1; }
+    .rc-group-1 { grid-column: 2; grid-row: 1; }
+
+    /* Row 2: Professional Service | Education + Memberships */
+    .professional_service { grid-column: 1; grid-row: 2; }
+    .rc-group-2           { grid-column: 2; grid-row: 2; }
+
+    /* Stack each right-column pair and push the LAST box to the row bottom */
+    .rc-group-1,
+    .rc-group-2 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .rc-group-1 > .project_experience,
+    .rc-group-2 > .professional_memberships {
+        flex: 1 1 auto;      /* grow the box itself down to the aligned bottom */
+        /* Keep the base 10px margin-bottom so the grown box's *visible* border
+           bottom lands level with the left box's border bottom (the left box's
+           own 10px card gap sits inside the shared grid row). */
     }
 }

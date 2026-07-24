@@ -196,6 +196,10 @@ cat(":::\n\n")  # Close left column
 # Right column - Skills, Project Experience, Education (30%)
 cat("::: {.column width=\"30%\"}\n\n")
 
+# Right-column group 1: Skills + Project Experience.
+# Screen CSS grows the last box so its bottom aligns with Work History (left).
+cat(":::: {.rc-group-1}\n\n")
+
 # Skills
 cat("::: {.skills}\n\n")
 cat("## Technical Skills\n\n")
@@ -249,6 +253,12 @@ cat(paste(project_types_fmt, collapse = "; "), "\n\n")
 
 cat(":::\n\n")
 
+cat("::::\n\n")  # Close rc-group-1
+
+# Right-column group 2: Education + Professional Memberships.
+# Screen CSS aligns this group's top/bottom with Professional Service (left).
+cat(":::: {.rc-group-2}\n\n")
+
 # Education
 cat("::: {.education}\n\n")
 cat("## Education\n\n")
@@ -275,6 +285,8 @@ walk(1:nrow(professional_memberships), \(i) {
   cat("**", pm$Organization, "**: ", year_range, "\n\n", sep = "")
 })
 cat(":::\n\n")
+
+cat("::::\n\n")  # Close rc-group-2
 
 cat(":::\n\n")   # Close right column
 cat("::::\n\n")  # Close columns container
