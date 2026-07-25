@@ -30,6 +30,7 @@ bib_path <- "Bibliography/cv_publications.bib"
 pubs <- parse_publications(bib_path)
 peer_reviewed <- Filter(function(r) !is_report(r), pubs)
 reports       <- Filter(is_report, pubs)
+presentations <- parse_presentations("Bibliography/cv_presentations.bib")
 
 cat("::: {.publications}\n\n")
 cat("::: {.pubs-header}\n\n")
@@ -43,6 +44,10 @@ if (length(peer_reviewed)) {
 if (length(reports)) {
   cat("### Reports\n\n")
   for (r in reports) cat(format_entry(r), "\n\n")
+}
+if (length(presentations)) {
+  cat("### Presentations\n\n")
+  for (r in presentations) cat(format_presentation(r), "\n\n")
 }
 cat(":::\n\n")
 ```
