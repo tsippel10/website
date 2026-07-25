@@ -515,6 +515,10 @@ li {
         grid-template-rows: min-content min-content;
         column-gap: 1% !important;
         row-gap: 0;
+        /* No extra gap below the grid: the last-row cards already carry a 10px
+           margin-bottom, so the space above Selected Publications matches the
+           10px spacing between all the other boxes. */
+        margin-bottom: 0 !important;
     }
 
     /* Collapse the .column wrappers so the inner boxes become direct grid
@@ -534,4 +538,21 @@ li {
     .rc-group-1           { grid-column: 2; grid-row: 1; }
     .professional_service { grid-column: 1; grid-row: 2; }
     .rc-group-2           { grid-column: 2; grid-row: 2; }
+
+    /* The grid stretches each group wrapper to its row's (taller) height. Make
+       the wrapper a flex column and let its lower card absorb the slack, so the
+       card's border-bottom reaches the group bottom = the row line:
+       - Project Experience bottom  -> Work History bottom
+       - Prof. Memberships bottom   -> Professional Service bottom
+       Both left cards and the growing right cards carry the same 10px
+       margin-bottom, so the borders land on the same line. */
+    .rc-group-1,
+    .rc-group-2 {
+        display: flex;
+        flex-direction: column;
+    }
+    .rc-group-1 .project_experience,
+    .rc-group-2 .professional_memberships {
+        flex: 1 0 auto;
+    }
 }
