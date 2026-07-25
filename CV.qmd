@@ -313,7 +313,7 @@ reports       <- Filter(is_report, selected)
 cat("::: {.publications}\n\n")
 cat("::: {.pubs-header}\n\n")
 cat("## Selected Publications\n\n")
-cat("[See all publications →](", website_url, "/CV/Publications.html){.all-pubs-link}\n\n", sep = "")
+cat("[See all publications and presentations →](", website_url, "/CV/Publications.html){.all-pubs-link}\n\n", sep = "")
 cat(":::\n\n")
 if (length(peer_reviewed)) {
   cat("### Peer-reviewed publications\n\n")
