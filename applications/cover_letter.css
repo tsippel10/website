@@ -47,7 +47,7 @@ a {
   padding: 0 6px;
 }
 
-.letter-date { margin: 0 0 9px 0; color: #444; }
+.letter-date { display: block; text-align: center; margin: 0 0 9px 0; color: #444; }
 
 .recipient { margin: 0 0 11px 0; line-height: 1.3; }
 
