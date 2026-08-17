@@ -1,0 +1,39 @@
+---
+title: ""
+format:
+  html:
+    css: cover_letter.css
+    theme: none
+    format-links: false
+    embed-resources: true
+    page-layout: full
+---
+
+::: letterhead
+[Tim Sippel, Ph.D.]{.name} [\|]{.sep} [Senior Aquatic and Marine Scientist]{.role}
+
+[[tsippel\@gmail.com](mailto:tsippel@gmail.com)]{.contact} [\|]{.sep} www.environmental-scientist.com [\|]{.sep} Cell Phone: 858-348-7469
+:::
+
+[August 17, 2026]{.letter-date}
+
+Dear ESA Hiring Team,
+
+I am writing to apply for the Senior Biologist and Project Manager position on ESA's Northwest Biological Resources and Land Management team. I live in Portland, Oregon, and across 25+ years as an aquatic and marine scientist — exceeding the role's 20-year benchmark, the last nine focused on Pacific Northwest salmonids — I have built the combination this position calls for: technical depth in fisheries biology, fish passage, and Endangered Species Act Section 7 consultation; direct working relationships with USFWS, NMFS, WDFW, ODFW, and tribal co-managers; and a track record of managing project scope, schedule, and budget as a client-facing consultant while winning new work and mentoring junior staff.
+
+As a Senior Environmental Scientist and Fish Ecology subject-matter expert at Stantec, I provide senior scientific and analytical leadership and project management on regulatory-compliance projects spanning hydroelectric dam relicensing and removal, Biological Assessments and Section 7 consultations, fish passage, and habitat restoration and mitigation, across markets including onshore and offshore renewable energy, water conveyance, and site remediation. I manage staff level of effort and budgets across multi-year, multi-disciplinary projects, provide QA/QC on technical deliverables, and serve as the primary point of contact with clients and agency reviewers. I am senior author on a manuscript (in prep) quantifying spring Chinook spawning-habitat carrying capacity, and a member of Stantec's North America Quantitative Ecology team, where I build reproducible analytical tools in R and Quarto so assessments are transparent and defensible. That combination of technical authorship, project management, and quantitative rigor is what I would bring to ESA's permitting, mitigation, and restoration work.
+
+My prior roles have included working for Worley in a similar capacity, where I procured and managed a project to develop new analytical tools in R for coho abundance estimation and forecasting for the Washington Department of Fish and Wildlife, and procured and led a second project for The Nature Conservancy assessing the compatibility of recreational fishing within marine protected areas worldwide — both delivered on schedule and budget as the responsible project manager. During my five-year tenure with the Washington Department of Fish and Wildlife, I was a fishery scientist focused on salmon and steelhead in the Columbia River, monitoring, forecasting, and reporting abundance to meet Endangered Species Act and *US v. Oregon* Management Agreement obligations, and serving as WDFW's lead representative to the *US v. Oregon* Technical Advisory Committee. I worked daily with state, federal, and tribal co-managers, including CRITFC and the Confederated Tribes of the Colville Reservation, where technical credibility and earned trust are inseparable. I also secured funding for and led development of a Columbia River salmon population-assessment database that modernized abundance estimation, forecasting, and compliance reporting.
+
+Contributing to thought leadership and technical excellence is important to me. I am a member of the California Central Valley Project Improvement Act [Science Integration Team](https://cvpia.scienceintegrationteam.com/cvpia-sit) and hold an appointment to the [National Academy of Sciences Editorial Committee](https://www.nationalacademies.org/projects/DELS-BASCPR-25-02) for the United States' first [Nature Record](https://naturerecord.org) assessment, contributing primarily to the Inland Aquatic Ecosystems and Marine Ecosystems chapters as well as the broader consensus-based review, due for release later this year. I also served on the National Academies' Standing Committee on Offshore Wind and Fisheries, directly relevant to ESA's renewable energy market. While a contractor for NOAA, I served on the Pacific Fishery Management Council's Highly Migratory Species Management Team and as a stock assessment scientist assigned to the International Scientific Committee for Tuna and Tuna-like Species. I completed my graduate degrees and research in New Zealand and, as an extension of that, remain a member of two Fisheries New Zealand (their equivalent of NMFS) stock assessment working groups.
+
+I bring genuine interest and existing connections in business development, including Federal contract opportunities as well as other approaches, and I am comfortable representing clients directly in agency discussions. ESA's stated commitment to diversity and inclusion is also very appealing to me. My career has been built on keeping an open mind, learning from others, and mentoring the scientists coming up behind me.
+
+Thank you for your time and consideration. I am confident I would make strong technical and project management contributions to ESA's Biological Resources and Land Management team, and would fit naturally into its culture and values. I look forward to hearing from you.
+
+::: signoff
+Sincerely,
+
+
+Tim Sippel
+:::
