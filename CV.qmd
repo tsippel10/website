@@ -56,15 +56,13 @@ phone <- personal_info$Cell_Phone
 website <- personal_info$Website
 linkedin <- personal_info$LinkedIn
 github <- personal_info$Github
-professional_statement <- personal_info$Professional_Statement
-
 cat("::: {.personal_info}\n\n")
 cat("::: {.text-center}\n\n")
 cat("# ", name, " {.unlisted}\n\n")
 cat("<div class=\"professional-title\">**", professional_title, "**</div>\n\n", sep = "")
-if (!is.na(professional_statement)) {
-  cat("::: {.professional-statement}\n", professional_statement, "\n:::\n\n", sep = "")
-}
+# The Professional_Statement column is still maintained in the sheet, but the CV
+# no longer prints it -- the header goes straight from the title to the contact
+# band. Restore by re-emitting personal_info$Professional_Statement here.
 cat(":::\n\n")
 cat(":::\n\n")
 ```
